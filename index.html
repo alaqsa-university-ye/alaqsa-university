@@ -79,9 +79,8 @@
                 <textarea id="in-about-text" class="w-full bg-slate-700 p-2 rounded h-20 text-xs outline-none"></textarea>
             </div>
             
-            <div class="pt-4 space-y-2">
-                <button onclick="saveChanges()" class="w-full bg-yellow-600 text-black font-bold py-3 rounded-xl hover:bg-yellow-500 transition shadow-lg">حفظ التعديلات</button>
-                <button onclick="logout()" class="w-full bg-red-600 text-white font-bold py-2 rounded-xl hover:bg-red-700 transition opacity-90">تسجيل الخروج</button>
+            <div class="pt-4">
+                <button onclick="saveAndExit()" class="w-full bg-yellow-600 text-black font-black py-4 rounded-xl hover:bg-yellow-500 transition shadow-lg text-sm">حفظ التغييرات والخروج من التعديل</button>
             </div>
         </div>
     </div>
@@ -165,7 +164,7 @@
             <ul class="space-y-6">
                 <li class="flex items-center gap-4 border-b pb-4">
                     <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center text-yellow-500 font-bold italic">A.M</div>
-                    <div><p class="text-xs text-gray-400">المؤسس رئيس مجلس الأمناء</p><strong id="out-founder" class="text-lg text-black"></strong></div>
+                    <div><p class="text-xs text-gray-400">رئيس مجلس الأمناء</p><strong id="out-founder" class="text-lg text-black"></strong></div>
                 </li>
                 <li class="flex items-center gap-4 border-b pb-4">
                     <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center text-yellow-500 font-bold italic">H.Q</div>
@@ -267,11 +266,25 @@
             } else { alert('كلمة المرور غير صحيحة!'); }
         }
 
-        // دالة تسجيل الخروج
-        function logout() { 
+        // دالة الحفظ والخروج الفعلي
+        function saveAndExit() {
+            const data = {
+                ...defaultData,
+                logo: document.getElementById('in-logo').value,
+                fbUrl: document.getElementById('in-fb').value,
+                phone: document.getElementById('in-phone').value,
+                address: document.getElementById('in-address').value,
+                newsTitle: document.getElementById('in-news-title').value,
+                newsDesc: document.getElementById('in-news-desc').value,
+                aboutText: document.getElementById('in-about-text').value
+            };
+            // 1. حفظ البيانات
+            localStorage.setItem('aqsa_data_v9', JSON.stringify(data));
+            // 2. تسجيل الخروج الفعلي
             localStorage.removeItem('univ_master_v9'); 
-            alert('تم تسجيل الخروج بنجاح');
-            location.reload(); 
+            // 3. رسالة تأكيد وإعادة تحميل
+            alert('تم حفظ التغييرات وتسجيل الخروج بنجاح');
+            location.reload();
         }
 
         function openNews() {
@@ -305,22 +318,6 @@
             document.getElementById('in-news-title').value = saved.newsTitle;
             document.getElementById('in-news-desc').value = saved.newsDesc;
             document.getElementById('in-about-text').value = saved.aboutText;
-        }
-
-        function saveChanges() {
-            const data = {
-                ...defaultData,
-                logo: document.getElementById('in-logo').value,
-                fbUrl: document.getElementById('in-fb').value,
-                phone: document.getElementById('in-phone').value,
-                address: document.getElementById('in-address').value,
-                newsTitle: document.getElementById('in-news-title').value,
-                newsDesc: document.getElementById('in-news-desc').value,
-                aboutText: document.getElementById('in-about-text').value
-            };
-            localStorage.setItem('aqsa_data_v9', JSON.stringify(data));
-            alert('تم حفظ التعديلات بنجاح!');
-            location.reload();
         }
 
         window.onload = function() {
