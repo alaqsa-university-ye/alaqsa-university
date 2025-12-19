@@ -10,26 +10,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@500;700;900&display=swap');
         body { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; font-weight: 500; overflow-x: hidden; }
         .uni-title { font-family: 'Cairo', sans-serif; font-weight: 900; }
-        @keyframes logo-pulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.4)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(218, 165, 32, 0.6)); }
-        }
+        @keyframes logo-pulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.4)); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(218, 165, 32, 0.6)); } }
         .logo-pulsing { animation: logo-pulse 3s infinite ease-in-out; }
-        .admin-sidebar { 
-            transform: translateX(100%); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-            position: fixed; top: 0; right: 0; width: 350px; background: #0f172a; 
-            color: white; z-index: 2000; padding: 25px; height: 100vh; overflow-y: auto;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-        }
+        .admin-sidebar { transform: translateX(100%); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: fixed; top: 0; right: 0; width: 350px; background: #0f172a; color: white; z-index: 2000; padding: 25px; height: 100vh; overflow-y: auto; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
         .admin-sidebar.active { transform: translateX(0); }
         .leader-img { width: 75px; height: 75px; border-radius: 18px; object-fit: cover; border: 3px solid #ca8a04; transition: 0.3s; }
-        .leader-img:hover { transform: scale(1.1) rotate(3deg); }
         #facultyPage { display: none; position: fixed; inset: 0; background: white; z-index: 1000; overflow-y: auto; padding-top: 80px; }
         .faculty-card { background: #f8fafc; border-radius: 25px; padding: 25px; border: 1px solid #e2e8f0; transition: 0.3s; text-align: center; }
         .news-ticker { background: #ca8a04; color: black; padding: 12px 0; overflow: hidden; position: relative; font-weight: 900; border-bottom: 4px solid black; }
         .news-content { display: inline-block; white-space: nowrap; animation: ticker 30s linear infinite; font-size: 1.1rem; }
         @keyframes ticker { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         .hero-text-shadow { text-shadow: 0 4px 20px rgba(0,0,0,1), 0 0 40px rgba(202,138,4,0.6); }
+        /* تحسين عرض الفيسبوك */
+        .fb-container { position: relative; width: 100%; min-height: 500px; border-radius: 40px; overflow: hidden; border: 8px solid #ca8a04; background: white; }
+        .fb-container iframe { width: 100% !important; height: 500px !important; border: none; overflow: hidden; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 text-right">
@@ -49,7 +43,7 @@
             </div>
             <div><label class="text-[10px] text-gray-400">رقم الواتساب</label><input type="text" id="in-phone" class="w-full bg-slate-700 p-2 rounded text-xs"></div>
             <div><label class="text-[10px] text-gray-400">العنوان الكامل</label><textarea id="in-address" rows="3" class="w-full bg-slate-700 p-2 rounded text-xs"></textarea></div>
-            <button onclick="saveAndExit()" class="w-full bg-yellow-600 text-black font-black py-4 rounded-xl hover:bg-yellow-500 shadow-lg transition">حفظ التغييرات</button>
+            <button onclick="saveAndExit()" class="w-full bg-yellow-600 text-black font-black py-4 rounded-xl hover:bg-yellow-500 shadow-lg">حفظ التغييرات</button>
         </div>
     </div>
 
@@ -70,41 +64,24 @@
     </nav>
 
     <div class="news-ticker"><div class="news-content">⚡ يبدأ التسجيل للفصل الدراسي الجديد في جميع الكليات الطبية والإدارية ⚡ نرحب بالطلاب المستجدين في رحاب جامعة الأقصى ⚡ تمنياتنا لطلابنا بالتوفيق والنجاح ⚡</div></div>
+
     <div id="mainContent">
         <header id="home" class="relative h-[650px] bg-slate-900 flex items-center justify-center text-center overflow-hidden">
             <img src="https://raw.githubusercontent.com/aqsa-un/.net/refs/heads/main/1766160658725.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 scale-105">
             <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
             <div class="relative z-10 px-4">
-                <h1 class="uni-title text-5xl md:text-8xl font-black text-white mb-16 italic hero-text-shadow leading-tight">
-                    جامعة الأقصى <br> 
-                    <span class="text-yellow-600">للعلوم والتكنولوجيا</span>
-                </h1>
-                
+                <h1 class="uni-title text-5xl md:text-8xl font-black text-white mb-16 italic hero-text-shadow leading-tight">جامعة الأقصى <br> <span class="text-yellow-600">للعلوم والتكنولوجيا</span></h1>
                 <div class="mt-12">
-                    <p class="text-xl md:text-3xl text-gray-100 font-bold bg-black/70 inline-block px-12 py-5 rounded-full border-2 border-yellow-600 shadow-2xl backdrop-blur-md">
-                        نصنع القادة لبناء المستقبل
-                    </p>
+                    <p class="text-xl md:text-3xl text-gray-100 font-bold bg-black/70 inline-block px-12 py-5 rounded-full border-2 border-yellow-600 shadow-2xl backdrop-blur-md">نصنع القادة لبناء المستقبل</p>
                 </div>
             </div>
         </header>
 
-        <section class="py-16 bg-black">
-            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-white text-center">
-                <div class="p-8 rounded-3xl border border-yellow-600/20 bg-white/5 hover:bg-white/10 transition">
-                    <i class="fas fa-award text-5xl text-yellow-500 mb-4"></i>
-                    <h5 class="font-black text-2xl mb-2 italic">الجودة الأكاديمية</h5>
-                    <p class="text-gray-400 font-bold">معايير تعليمية متطورة تضمن كفاءة الخريج.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-yellow-600/20 bg-white/5 hover:bg-white/10 transition border-x-yellow-600/40">
-                    <i class="fas fa-microscope text-5xl text-yellow-500 mb-4"></i>
-                    <h5 class="font-black text-2xl mb-2 italic">الابتكار والبحث</h5>
-                    <p class="text-gray-400 font-bold">تشجيع البحث العلمي والابتكار التقني المستمر.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-yellow-600/20 bg-white/5 hover:bg-white/10 transition">
-                    <i class="fas fa-user-graduate text-5xl text-yellow-500 mb-4"></i>
-                    <h5 class="font-black text-2xl mb-2 italic">التميز المهني</h5>
-                    <p class="text-gray-400 font-bold">تجهيز الطالب للمنافسة العالمية في سوق العمل.</p>
-                </div>
+        <section class="py-16 bg-black text-center text-white">
+            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl border border-yellow-600/20 bg-white/5 hover:bg-white/10 transition"><i class="fas fa-award text-5xl text-yellow-500 mb-4"></i><h5 class="font-black text-2xl mb-2 italic">الجودة الأكاديمية</h5><p class="text-gray-400 font-bold text-sm">معايير تعليمية متطورة تضمن كفاءة الخريج.</p></div>
+                <div class="p-8 rounded-3xl border border-yellow-600/20 bg-white/5 hover:bg-white/10 transition border-x-yellow-600/40"><i class="fas fa-microscope text-5xl text-yellow-500 mb-4"></i><h5 class="font-black text-2xl mb-2 italic">الابتكار والبحث</h5><p class="text-gray-400 font-bold text-sm">تشجيع البحث العلمي والابتكار التقني المستمر.</p></div>
+                <div class="p-8 rounded-3xl border border-yellow-600/20 bg-white/5 hover:bg-white/10 transition"><i class="fas fa-user-graduate text-5xl text-yellow-500 mb-4"></i><h5 class="font-black text-2xl mb-2 italic">التميز المهني</h5><p class="text-gray-400 font-bold text-sm">تجهيز الطالب للمنافسة العالمية في سوق العمل.</p></div>
             </div>
         </section>
 
@@ -112,36 +89,20 @@
             <div class="space-y-10">
                 <h3 class="uni-title text-5xl font-black border-r-8 border-yellow-600 pr-6 italic">من نحن؟</h3>
                 <p id="out-about-text" class="text-gray-800 leading-relaxed text-2xl font-bold text-justify"></p>
+                <div class="p-10 bg-yellow-600 rounded-[40px] shadow-2xl text-black cursor-pointer hover:bg-black hover:text-white transition group" onclick="openFacultyPage()"><h4 class="text-3xl font-black mb-2 italic"><i class="fas fa-graduation-cap"></i> هيئة التدريس</h4><p class="font-black text-lg">نخبة الكوادر الأكاديمية.. اضغط للتفاصيل.</p></div>
                 
-                <div class="p-10 bg-yellow-600 rounded-[40px] shadow-2xl text-black cursor-pointer hover:bg-black hover:text-white transition-all duration-500 group" onclick="openFacultyPage()">
-                    <h4 class="text-3xl font-black mb-3 italic flex items-center gap-4">
-                        <i class="fas fa-graduation-cap"></i> أعضاء هيئة التدريس
-                    </h4>
-                    <p class="font-black text-lg">تضم الجامعة نخبة من الكوادر الأكاديمية المتميزة.. اضغط للتفاصيل.</p>
-                </div>
-
-                <div class="rounded-[40px] overflow-hidden border-8 border-yellow-600 shadow-2xl h-[500px] bg-white relative">
-                    <div class="absolute top-0 left-0 right-0 bg-yellow-600 py-2 text-center font-black text-black z-10">صفحتنا الرسمية على فيسبوك</div>
-                    <iframe id="fb-frame" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61579917951873&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" 
-                    class="w-full h-full border-none pt-10" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <div class="fb-container shadow-2xl relative">
+                    <div class="bg-yellow-600 py-3 text-center font-black text-black z-20 relative">صفحتنا الرسمية على فيسبوك</div>
+                    <iframe id="fb-frame" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61579917951873&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"></iframe>
                 </div>
             </div>
 
-            <div class="bg-white p-12 rounded-[50px] shadow-[0_20px_60px_rgba(0,0,0,0.1)] border-2 border-gray-100 h-fit lg:sticky lg:top-32">
-                <h4 class="uni-title font-black text-yellow-700 mb-10 border-b-4 border-yellow-600 pb-4 text-3xl italic text-center">رئاسة الجامعة</h4>
+            <div class="bg-white p-12 rounded-[50px] shadow-2xl border-2 border-gray-100 h-fit lg:sticky lg:top-32">
+                <h4 class="uni-title font-black text-yellow-700 mb-10 border-b-4 border-yellow-600 pb-4 text-3xl italic text-center">قيادة الجامعة</h4>
                 <ul class="space-y-10">
-                    <li class="flex items-center gap-6 p-6 rounded-3xl hover:bg-yellow-50 transition border-b-2 border-gray-50">
-                        <img id="out-img-founder" src="" class="leader-img shadow-xl">
-                        <div><p class="text-sm text-gray-500 font-black mb-1">رئيس مجلس الأمناء</p><strong id="out-founder" class="text-2xl text-black font-black"></strong></div>
-                    </li>
-                    <li class="flex items-center gap-6 p-6 rounded-3xl hover:bg-yellow-50 transition border-b-2 border-gray-50">
-                        <img id="out-img-rector" src="" class="leader-img shadow-xl">
-                        <div><p class="text-sm text-gray-500 font-black mb-1">رئيس الجامعة</p><strong id="out-rector" class="text-2xl text-black font-black"></strong></div>
-                    </li>
-                    <li class="flex items-center gap-6 p-6 rounded-3xl hover:bg-yellow-50 transition">
-                        <img id="out-img-sec" src="" class="leader-img shadow-xl">
-                        <div><p class="text-sm text-gray-500 font-black mb-1">الأمين العام</p><strong id="out-sec" class="text-2xl text-black font-black"></strong></div>
-                    </li>
+                    <li class="flex items-center gap-6 p-6 rounded-3xl border-b-2 border-gray-50"><img id="out-img-founder" src="" class="leader-img shadow-xl"><div><p class="text-sm text-gray-500 font-black mb-1">رئيس مجلس الأمناء</p><strong id="out-founder" class="text-2xl text-black font-black"></strong></div></li>
+                    <li class="flex items-center gap-6 p-6 rounded-3xl border-b-2 border-gray-50"><img id="out-img-rector" src="" class="leader-img shadow-xl"><div><p class="text-sm text-gray-500 font-black mb-1">رئيس الجامعة</p><strong id="out-rector" class="text-2xl text-black font-black"></strong></div></li>
+                    <li class="flex items-center gap-6 p-6 rounded-3xl"><img id="out-img-sec" src="" class="leader-img shadow-xl"><div><p class="text-sm text-gray-500 font-black mb-1">الأمين العام</p><strong id="out-sec" class="text-2xl text-black font-black"></strong></div></li>
                 </ul>
             </div>
         </section>
@@ -152,16 +113,12 @@
                     <div class="bg-white rounded-[50px] p-12 shadow-2xl border-t-[12px] border-red-700 transform hover:scale-105 transition-all duration-500">
                         <i class="fas fa-stethoscope text-7xl text-red-700 mb-6"></i>
                         <h4 class="text-3xl font-black mb-6">كلية العلوم الطبية</h4>
-                        <div class="space-y-3">
-                            <p class="font-black text-red-700 text-2xl italic bg-red-50 py-4 rounded-3xl shadow-inner">صيدلة - تمريض - قبالة</p>
-                        </div>
+                        <p class="font-black text-red-700 text-2xl italic bg-red-50 py-4 rounded-3xl shadow-inner">صيدلة - تمريض - قبالة</p>
                     </div>
                     <div class="bg-white rounded-[50px] p-12 shadow-2xl border-t-[12px] border-yellow-600 transform hover:scale-105 transition-all duration-500">
-                        <i class="fas fa-chart-pie text-7xl text-yellow-600 mb-6"></i>
+                        <i class="fas fa-chart-line text-7xl text-yellow-600 mb-6"></i>
                         <h4 class="text-3xl font-black mb-6">العلوم الإدارية والتقنية</h4>
-                        <div class="space-y-3">
-                            <p class="font-black text-yellow-700 text-2xl italic bg-yellow-50 py-4 rounded-3xl shadow-inner">إدارة - محاسبة - نظم - قانون</p>
-                        </div>
+                        <p class="font-black text-yellow-700 text-2xl italic bg-yellow-50 py-4 rounded-3xl shadow-inner">إدارة - محاسبة - نظم - قانون</p>
                     </div>
                 </div>
             </div>
@@ -169,19 +126,17 @@
 
         <section class="py-24 bg-white">
             <div class="container mx-auto px-4 max-w-5xl">
-                <div class="bg-slate-900 rounded-[70px] p-12 shadow-[0_30px_100px_rgba(0,0,0,0.3)] border-4 border-yellow-600 flex flex-col md:flex-row gap-12 items-center">
+                <div class="bg-slate-900 rounded-[70px] p-12 shadow-2xl border-4 border-yellow-600 flex flex-col md:flex-row gap-12 items-center">
                     <div class="md:w-1/3 text-center text-white">
-                        <div class="w-28 h-28 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse shadow-[0_0_30px_rgba(202,138,4,0.5)]">
-                            <i class="fas fa-headset text-5xl text-black"></i>
-                        </div>
+                        <div class="w-28 h-28 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"><i class="fas fa-comments text-5xl text-black"></i></div>
                         <h4 class="text-3xl font-black italic">تواصل معنا</h4>
-                        <p class="text-gray-400 font-bold mt-3 text-lg">فريق القبول متاح للرد الفوري على تساؤلاتكم عبر الواتساب.</p>
+                        <p class="text-gray-400 font-bold mt-3 text-lg">فريق القبول متاح للرد الفوري عبر الواتساب.</p>
                     </div>
                     <div class="md:w-2/3 w-full space-y-5">
-                        <input type="text" id="v-name" placeholder="ما هو اسمك الكريم؟" class="w-full bg-slate-800 text-white p-6 rounded-3xl outline-none border-2 border-transparent focus:border-yellow-600 font-bold text-lg transition-all">
-                        <textarea id="v-msg" rows="3" placeholder="كيف يمكننا مساعدتك اليوم؟" class="w-full bg-slate-800 text-white p-6 rounded-3xl outline-none border-2 border-transparent focus:border-yellow-600 font-bold text-lg transition-all"></textarea>
-                        <button onclick="send()" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-6 rounded-3xl text-2xl flex items-center justify-center gap-4 transition-all hover:shadow-[0_0_40px_rgba(22,163,74,0.4)] active:scale-95">
-                            <i class="fab fa-whatsapp text-4xl"></i> إرسال الاستفسار الآن
+                        <input type="text" id="v-name" placeholder="ما هو اسمك الكريم؟" class="w-full bg-slate-800 text-white p-6 rounded-3xl outline-none border-2 border-transparent focus:border-yellow-600 font-bold text-lg">
+                        <textarea id="v-msg" rows="3" placeholder="كيف يمكننا مساعدتك؟" class="w-full bg-slate-800 text-white p-6 rounded-3xl outline-none border-2 border-transparent focus:border-yellow-600 font-bold text-lg"></textarea>
+                        <button onclick="send()" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-6 rounded-3xl text-2xl flex items-center justify-center gap-4 transition-all shadow-lg active:scale-95">
+                            <i class="fab fa-whatsapp text-4xl"></i> إرسال الآن
                         </button>
                     </div>
                 </div>
@@ -191,16 +146,14 @@
         <footer class="py-20 bg-black text-white border-t-[10px] border-yellow-600">
             <div class="container mx-auto px-6 text-center">
                 <div class="mb-12">
-                    <img id="footer-logo" src="" class="h-28 mx-auto mb-6 opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <img id="footer-logo" src="" class="h-28 mx-auto mb-6 opacity-90 drop-shadow-xl">
                     <p id="out-address" class="text-xl text-gray-300 max-w-4xl mx-auto font-bold leading-relaxed italic"></p>
                 </div>
                 <div class="flex justify-center gap-8 flex-wrap mb-16">
-                    <a id="out-phone-link" href="#" class="bg-green-600 px-12 py-5 rounded-3xl font-black flex items-center gap-4 hover:bg-green-700 transition transform hover:scale-110 shadow-2xl border-b-4 border-green-800 text-xl"><i class="fab fa-whatsapp text-3xl"></i> واتساب</a>
-                    <a id="out-fb-link" href="#" class="bg-blue-600 px-12 py-5 rounded-3xl font-black flex items-center gap-4 hover:bg-blue-700 transition transform hover:scale-110 shadow-2xl border-b-4 border-blue-800 text-xl"><i class="fab fa-facebook text-3xl"></i> فيسبوك</a>
+                    <a id="out-phone-link" href="#" class="bg-green-600 px-12 py-5 rounded-3xl font-black flex items-center gap-4 hover:bg-green-700 transition shadow-2xl text-xl"><i class="fab fa-whatsapp text-3xl"></i> واتساب</a>
+                    <a id="out-fb-link" href="#" class="bg-blue-600 px-12 py-5 rounded-3xl font-black flex items-center gap-4 hover:bg-blue-700 transition shadow-2xl text-xl"><i class="fab fa-facebook text-3xl"></i> فيسبوك</a>
                 </div>
-                <div class="border-t border-white/10 pt-10 text-gray-500 font-black italic text-sm tracking-widest">
-                    &copy; 2024 جامعة الأقصى للعلوم والتكنولوجيا - صرح تعليمي رائد في قلب اليمن
-                </div>
+                <p class="text-gray-500 font-black italic text-sm tracking-widest border-t border-white/10 pt-10">&copy; 2024 جامعة الأقصى للعلوم والتكنولوجيا</p>
             </div>
         </footer>
     </div>
@@ -209,20 +162,18 @@
         <div class="container mx-auto px-6 pb-24">
             <div class="flex justify-between items-center mb-16 border-b-8 border-yellow-600 pb-8">
                 <h2 class="uni-title text-4xl md:text-6xl font-black text-black italic">نخبة الكادر الأكاديمي</h2>
-                <button onclick="closeFacultyPage()" class="bg-black text-white px-10 py-4 rounded-2xl font-black hover:bg-red-700 transition shadow-2xl text-xl">إغلاق الصفحة</button>
+                <button onclick="closeFacultyPage()" class="bg-black text-white px-10 py-4 rounded-2xl font-black hover:bg-red-700 transition shadow-2xl text-xl">إغلاق</button>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                 <div class="faculty-card group">
                     <img src="https://via.placeholder.com/150" class="w-40 h-40 rounded-[40px] mx-auto mb-6 border-4 border-yellow-600 shadow-2xl group-hover:rotate-12 transition-all duration-500 object-cover">
                     <h4 class="text-3xl font-black mb-2">قريباً..</h4>
-                    <p class="text-yellow-700 font-black text-xl italic mb-3">درجة الدكتوراه</p>
-                    <p class="text-gray-500 font-bold italic bg-gray-100 py-2 rounded-xl">كلية العلوم الطبية</p>
+                    <p class="text-yellow-700 font-black text-xl italic mb-3">دكتوراه - العلوم الطبية</p>
                 </div>
                 <div class="faculty-card group">
                     <img src="https://via.placeholder.com/150" class="w-40 h-40 rounded-[40px] mx-auto mb-6 border-4 border-yellow-600 shadow-2xl group-hover:rotate-12 transition-all duration-500 object-cover">
                     <h4 class="text-3xl font-black mb-2">قريباً..</h4>
-                    <p class="text-yellow-700 font-black text-xl italic mb-3">درجة الماجستير</p>
-                    <p class="text-gray-500 font-bold italic bg-gray-100 py-2 rounded-xl">كلية العلوم الإدارية</p>
+                    <p class="text-yellow-700 font-black text-xl italic mb-3">ماجستير - العلوم الإدارية</p>
                 </div>
             </div>
         </div>
@@ -241,22 +192,22 @@
             imgSec: "https://via.placeholder.com/150",
             phone: "967781555637",
             address: "الجمهورية اليمنية - صنعاء - الحتارش - شارع الجامعة - بعد أسواق اليمن السعيد",
-            aboutText: "تعد جامعة الأقصى للعلوم والتكنولوجيا صرحاً تعليمياً ريادياً في الجمهورية اليمنية، تهدف إلى تخريج كوادر مؤهلة علمياً ومهنياً بأعلى المعايير العالمية لتلبية متطلبات التنمية الشاملة والنهوض بالمجتمع."
+            aboutText: "تعد جامعة الأقصى للعلوم والتكنولوجيا صرحاً تعليمياً ريادياً، تجمع بين الحداثة التكنولوجية والأصالة العلمية لخدمة المجتمع اليمني."
         };
 
         function openFacultyPage() { document.getElementById('mainContent').style.display='none'; document.getElementById('facultyPage').style.display='block'; window.scrollTo(0,0); }
         function closeFacultyPage() { document.getElementById('facultyPage').style.display='none'; document.getElementById('mainContent').style.display='block'; }
         
         function send() {
-            const s = JSON.parse(localStorage.getItem('aqsa_v15')) || defaultData;
+            const s = JSON.parse(localStorage.getItem('aqsa_v20')) || defaultData;
             const n = document.getElementById('v-name').value;
             const m = document.getElementById('v-msg').value;
-            if(!n || !m) { alert("لطفاً، اكتب اسمك ورسالتك"); return; }
-            window.open(`https://wa.me/${s.phone}?text=استفسار جديد من الموقع:%0Aالاسم: ${n}%0Aالرسالة: ${m}`, '_blank');
+            if(!n || !m) return alert("أكمل البيانات");
+            window.open(`https://wa.me/${s.phone}?text=استفسار من: ${n}%0Aالرسالة: ${m}`, '_blank');
         }
 
         function applyData() {
-            const s = JSON.parse(localStorage.getItem('aqsa_v15')) || defaultData;
+            const s = JSON.parse(localStorage.getItem('aqsa_v20')) || defaultData;
             document.getElementById('out-logo').src = s.logo;
             document.getElementById('footer-logo').src = s.logo;
             document.getElementById('out-founder').innerText = s.founder;
@@ -269,7 +220,6 @@
             document.getElementById('out-about-text').innerText = s.aboutText;
             document.getElementById('out-phone-link').href = `https://wa.me/${s.phone}`;
             document.getElementById('out-fb-link').href = s.fbUrl;
-
             document.getElementById('in-logo').value = s.logo;
             document.getElementById('in-phone').value = s.phone;
             document.getElementById('in-address').value = s.address;
@@ -287,16 +237,16 @@
                 imgRector: document.getElementById('in-img-rector').value,
                 imgSec: document.getElementById('in-img-sec').value
             };
-            localStorage.setItem('aqsa_v15', JSON.stringify(d));
-            localStorage.removeItem('adm_v15'); location.reload();
+            localStorage.setItem('aqsa_v20', JSON.stringify(d));
+            localStorage.removeItem('adm_v20'); location.reload();
         }
 
-        function showLogin() { if(prompt("أدخل كلمة المرور الإدارية:") === MASTER_PASS) { localStorage.setItem('adm_v15','1'); location.reload(); } }
+        function showLogin() { if(prompt("الباسورد:") === MASTER_PASS) { localStorage.setItem('adm_v20','1'); location.reload(); } }
         function toggleAdmin() { document.getElementById('adminPanel').classList.toggle('active'); }
 
         window.onload = () => {
             applyData();
-            if(localStorage.getItem('adm_v15')) {
+            if(localStorage.getItem('adm_v20')) {
                 document.getElementById('adminTools').classList.remove('hidden');
                 document.getElementById('loginBtn').classList.add('hidden');
             }
